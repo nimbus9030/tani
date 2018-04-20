@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/instagram', function () {
+    return view('instagram');
+});
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
