@@ -16,6 +16,22 @@
 
                     You are logged in!
                 </div>
+                <div class="panel-body">
+                    Instagram hasgtag
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('store') }}">
+                        {{ csrf_field() }}
+                        
+                        @if ( $tag )
+                            <input id="tag" name="tag" value="{{ $tag }}" type="text">
+                        @else
+                            <input id="tag" name="tag" value="{{ old('tag') }}" type="text" placeholder="#sample tag">
+                        @endif
+                        
+                        <button type="submit" class="btn btn-primary">
+                            submit
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

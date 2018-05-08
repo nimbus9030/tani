@@ -19,8 +19,15 @@ $(function(){
     // scrElement.setAttribute( 'src', 'https://www.instagram.com/explore/tags/Galaxyカメラ部/?__a=1' );
     // document.body.appendChild( scrElement );
 
+
+    // var sites = {!! json_encode($tag)!!};
+    // console.log( tag );
+    // alert( { $tag }  );
+
+    var url = 'https://www.instagram.com/explore/tags/' + tag + '/?__a=1';
+
     $.ajax({
-        url: 'https://www.instagram.com/explore/tags/Galaxyカメラ部/?__a=1',
+        url: url,
         dataType: 'json',
         type: 'GET',
         success: function(data){

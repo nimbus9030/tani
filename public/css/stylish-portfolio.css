@@ -8,6 +8,10 @@ body {
   font-family: 'Source Sans Pro';
 }
 
+.ul {
+  display: inline-block;
+}
+
 .btn-xl {
   padding: 1.25rem 2.5rem;
 }

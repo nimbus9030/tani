@@ -15,11 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/instagram', function () {
-    return view('instagram');
-});
+// Route::get('/instagram', function () {
+//     return view('instagram');
+// });
+
+Route::get('/instagram', 'HomeController@insta')->name('insta');
+
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/home', 'HomeController@store')->name('store');

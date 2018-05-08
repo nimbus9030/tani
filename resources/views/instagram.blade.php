@@ -14,12 +14,12 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    {{-- <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> --}}
+    {{-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css"> --}}
+    {{-- <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet"> --}}
 
     <!-- Custom CSS -->
-    <link href="css/stylish-portfolio.min.css" rel="stylesheet">
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
 
   </head>
 
@@ -131,7 +131,7 @@
     <!-- Callout -->
     <section class="callout">
       <div class="container text-center">
-        <h2 class="mx-auto mb-5">#Galaxyカメラ部</h2>
+        <h2 class="mx-auto mb-5">use blade....{{ $tag }}  </h2>
         <ul id="rudr_instafeed"></ul>
       </div>
     </section>
@@ -247,8 +247,13 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for this template -->
+    <script>
+          var tag = {!! json_encode($tag) !!};
+              // console.log(tag);
+    </script>
     <script src="js/stylish-portfolio.min.js"></script>
     <script src="js/instagram.js"></script>
+
   </body>
 
 </html>

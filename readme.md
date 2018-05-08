@@ -1,3 +1,11 @@
+http://www.webopixel.net/php/1259.html
+
+https://github.com/ozdemirburak/laravel-5-simple-cms
+https://github.com/LavaLite/cms
+
+
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
