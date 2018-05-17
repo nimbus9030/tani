@@ -34,7 +34,7 @@ $(function(){
      		// console.log(data.graphql.hashtag.edge_hashtag_to_top_posts.edges[0].node.display_url);
     		for( x in data.graphql.hashtag.edge_hashtag_to_top_posts.edges ){
                 // console.log(x);
-    			$('ul').append('<li><img src="'+data.graphql.hashtag.edge_hashtag_to_top_posts.edges[x].node.thumbnail_src+'" width="100" height="100" ></li>'); // data.data[x].images.low_resolution.url - URL of image, 306х306
+                $('ul').append('<li class="list-inline-item"><img src="'+data.graphql.hashtag.edge_hashtag_to_top_posts.edges[x].node.thumbnail_src+'" width="300" height="300" ></li>'); // data.data[x].images.low_resolution.url - URL of image, 306х306
     			// data.data[x].images.thumbnail.url - URL of image 150х150
     			// data.data[x].images.standard_resolution.url - URL of image 612х612
     			// data.data[x].link - Instagram post URL

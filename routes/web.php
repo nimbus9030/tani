@@ -11,15 +11,23 @@
 |
 */
 
+use App;
+use App\Tag;
+
+use TagController;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/instagram', function () {
-//     return view('instagram');
-// });
+Route::get('/instagram', function () {
+    $tag_table = App\Tag::class;
+    $tag = $tag_table::first()['url'];
+    return view('instagram2', ['tag' => $tag]);
+    // return view('instagram');
+});
 
-Route::get('/instagram', 'HomeController@insta')->name('insta');
+// Route::get('/instagram', 'HomeController@insta')->name('insta');
 
 
 

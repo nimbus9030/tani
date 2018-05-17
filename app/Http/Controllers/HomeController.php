@@ -55,6 +55,6 @@ class HomeController extends Controller
         Log::info('called insta...');
         $tag_table = App\Tag::class;
         $tag = $tag_table::first()['url'];
-        return view('instagram', ['tag' => $tag]);
+        return view('instagram2', ['tag' => $tag]);
     }
 }
