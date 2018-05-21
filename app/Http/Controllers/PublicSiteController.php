@@ -32,6 +32,8 @@ class PublicSiteController extends Controller
         // /* Get API ( Require HTTPS ) JSON Convert */
         $instagramApiURI    = 'https://api.instagram.com/v1/users/'.$instagramUserID.'/media/recent?access_token='.$instagramToken.'&count=10';
         // https://camp-in.jp/campaign/widget/1202/3?callback=?
+
+        // pollInstagram('https://api.instagram.com/v1/users/3/media/recent/?callback=?&min_timestamp=1388563200&max_timestamp=1420099200&access_token={access_token}', 33);
         $instagramDates = file_get_contents($instagramApiURI);
 
         return $instagramDates;
