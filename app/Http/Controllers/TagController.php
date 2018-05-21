@@ -8,6 +8,14 @@ use Auth;
 
 use Log;
 
+
+
+/**
+ * 2018/05/18 jh.lee
+ * This controller is not used now.
+ * 
+ */
+
 class TagController extends Controller
 {
     public function __construct()
