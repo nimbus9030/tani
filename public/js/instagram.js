@@ -1,52 +1,93 @@
-$(function(){
-    //pure js
-    var token = '3520061443.a090108.3d61d228cb6f4c77a3a39e1b1d8674ed',
-        num_photos = 10,
-        tag_name = '春',
-        container = document.getElementById( 'rudr_instafeed' ),
-        scrElement = document.createElement( 'script' );
 
-    // window.mishaProcessResult = function( data ) {
-    //     for( x in data.data ){
-    //         container.innerHTML += '<li><img src="' + data.data[x].images.low_resolution.url + '"></li>';
-    //     }
-    // }
+$(function () {
+    // var feed = new Instafeed({
+    //     get: 'tagged',
+    //     tagName: 'coffee',
+    //     clientId: '3520061443',
+    //     accessToken:'3520061443.a090108.3d61d228cb6f4c77a3a39e1b1d8674ed'
+    // });
+    // feed.run();
 
-    // https://api.instagram.com/v1/tags/{tag-name}?access_token=ACCESS-TOKEN
-    // scrElement.setAttribute( 'src', 'https://api.instagram.com/v1/tags/春' + '?access_token=' + token + '&count=' + num_photos + '&callback=mishaProcessResult' );
-    // scrElement.setAttribute( 'src', 'https://api.instagram.com/v1/users/self/media/recent?access_token=' + token + '&count=' + num_photos + '&callback=mishaProcessResult' );
-
-    // scrElement.setAttribute( 'src', 'https://www.instagram.com/explore/tags/Galaxyカメラ部/?__a=1' );
-    // document.body.appendChild( scrElement );
-
-
-    // var sites = {!! json_encode($tag)!!};
-    // console.log( tag );
-    // alert( { $tag }  );
-
-    var url = 'https://www.instagram.com/explore/tags/' + tag + '/?__a=1';
-
-    $.ajax({
-        url: url,
-        dataType: 'json',
-        type: 'GET',
-        success: function(data){
-     		// console.log(data.graphql.hashtag.edge_hashtag_to_top_posts.edges[0].node.display_url);
-    		for( x in data.graphql.hashtag.edge_hashtag_to_top_posts.edges ){
-                // console.log(x);
-                $('ul').append('<li class="list-inline-item"><img src="'+data.graphql.hashtag.edge_hashtag_to_top_posts.edges[x].node.thumbnail_src+'" width="300" height="300" ></li>'); // data.data[x].images.low_resolution.url - URL of image, 306х306
-    			// data.data[x].images.thumbnail.url - URL of image 150х150
-    			// data.data[x].images.standard_resolution.url - URL of image 612х612
-    			// data.data[x].link - Instagram post URL
-    		}
-    	},
-    	error: function(data){
-    		console.log(data); // send the error notifications to console
-    	}
+    var feed = new Instafeed({
+        clientId: 'a090108648fd4904bd50f26dc904ff43',
+        get: 'tagged',
+        tagName: 'coffee',
+        userId: '3520061443',
+        accessToken: '3520061443.a090108.3d61d228cb6f4c77a3a39e1b1d8674ed',
+        links: true,
+        limit: 18, // 取得件数 
+        resolution: 'low_resolution', // thumbnail (default) - 150x150 | low_resolution - 306x306 | standard_resolution - 612x612
+        template: '<a href="{{link}}"><img src="{{image}}" /></a>' // 画像URL：{{image}} リンク：{{link}} キャプションテキスト{{caption}} いいね数：{{likes}} コメント数：{{comments}}
     });
+    feed.run();
+
+    // var feed = new Instafeed({
+    //     get: 'tagged',
+    //     tagName: 'awesome',
+    //     clientId: 'a090108648fd4904bd50f26dc904ff43',
+    //     accessToken: '3520061443.a090108.3d61d228cb6f4c77a3a39e1b1d8674ed',
+    //     template: '<a href="{{link}}"><img src="{{image}}" /></a>'
+    // });
+    // feed.run();
 });
 
+/***
+ * 20180521 簡単に動作するjs
+ * 
+ */
+// $(function(){
+//     //pure js
+//     var token = '3520061443.a090108.3d61d228cb6f4c77a3a39e1b1d8674ed',
+//         num_photos = 10,
+//         tag_name = '春',
+//         container = document.getElementById( 'rudr_instafeed' ),
+//         scrElement = document.createElement( 'script' );
 
+//     // window.mishaProcessResult = function( data ) {
+//     //     for( x in data.data ){
+//     //         container.innerHTML += '<li><img src="' + data.data[x].images.low_resolution.url + '"></li>';
+//     //     }
+//     // }
+
+//     // https://api.instagram.com/v1/tags/{tag-name}?access_token=ACCESS-TOKEN
+//     // scrElement.setAttribute( 'src', 'https://api.instagram.com/v1/tags/春' + '?access_token=' + token + '&count=' + num_photos + '&callback=mishaProcessResult' );
+//     // scrElement.setAttribute( 'src', 'https://api.instagram.com/v1/users/self/media/recent?access_token=' + token + '&count=' + num_photos + '&callback=mishaProcessResult' );
+
+//     // scrElement.setAttribute( 'src', 'https://www.instagram.com/explore/tags/Galaxyカメラ部/?__a=1' );
+//     // document.body.appendChild( scrElement );
+
+
+
+
+//     // var sites = {!! json_encode($tag)!!};
+//     // console.log( tag );
+//     // alert( { $tag }  );
+
+//     var url = 'https://www.instagram.com/explore/tags/' + tag + '/?__a=1';
+
+//     $.ajax({
+//         url: url,
+//         dataType: 'json',
+//         type: 'GET',
+//         success: function(data){
+//      		// console.log(data.graphql.hashtag.edge_hashtag_to_top_posts.edges[0].node.display_url);
+//     		for( x in data.graphql.hashtag.edge_hashtag_to_top_posts.edges ){
+//                 // console.log(x);
+//                 $('ul').append('<li class="list-inline-item"><img src="'+data.graphql.hashtag.edge_hashtag_to_top_posts.edges[x].node.thumbnail_src+'" width="300" height="300" ></li>'); // data.data[x].images.low_resolution.url - URL of image, 306х306
+//     			// data.data[x].images.thumbnail.url - URL of image 150х150
+//     			// data.data[x].images.standard_resolution.url - URL of image 612х612
+//     			// data.data[x].link - Instagram post URL
+//     		}
+//     	},
+//     	error: function(data){
+//     		console.log(data); // send the error notifications to console
+//     	}
+//     });
+// });
+
+/**
+ * not used..
+ */
 //auth
 //https://api.instagram.com/oauth/authorize/?client_id=a090108648fd4904bd50f26dc904ff43&redirect_uri=https://www.yahoo.com&response_type=token&scope=public_content
 //
