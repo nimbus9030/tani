@@ -46,22 +46,16 @@
 	<!-- Intro Section -->
     <section class="intro">
         <div class="container">
-            {{-- <div class="row"> --}}
+            <div class="row">
                 <div class="col-md-auto">
                 	<span class="glyphicon glyphicon-apple" style="font-size: 60px"></span>
                     <h2 class="section-heading">管理画面で入力したタグは「{{ $tag }}」です。</h2>
                     <p class="text-light">タグに関連がある写真がここにでます。</p>
                     <h2 class="mx-auto mb-5">#{{ $tag }} </h2>
+                    <!-- <div id="instafeed"></div> -->
                     <ul id="rudr_instafeed" class="list-inline"></ul>
-                    
-                    {{-- <ul class="list-inline">
-                        <li class="list-inline-item">item1</li>
-                        <li class="list-inline-item">item1</li>
-                        <li class="list-inline-item">item1</li>
-                        <li class="list-inline-item">item1</li>
-                    </ul> --}}
                 </div>
-            {{-- </div> --}}
+            </div>
         </div>
     </section>
 
@@ -136,12 +130,19 @@
     
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    
-    <!-- Custom Javascript -->
-    {{-- <script src="js/custom.js"></script> --}}
+    <script src="js/instafeed.js"></script>
 
-    <script>
+    <script type="text/javascript">
         var tag = {!! json_encode($tag) !!};
+
+
+        // var feed = new Instafeed({
+        //     get: 'tagged',
+        //     tagName: 'coffee',
+        //     clientId: 'a090108648fd4904bd50f26dc904ff43',
+        //     accessToken: '3520061443.a090108.3d61d228cb6f4c77a3a39e1b1d8674ed',
+        // });
+        // feed.run();
     </script>
     <script src="js/instagram.js"></script>
 
