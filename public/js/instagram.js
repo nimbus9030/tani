@@ -15,13 +15,12 @@
  */
 
 
-var insta_data = "";
-
+// var insta_data;
 
 function ShowDetail(id){
     // console.log("mouse overed..", comment_count, link_count);
     // console.log(id);
-    console.log(insta_data.graphql.hashtag.edge_hashtag_to_top_posts.edges[id]);
+    // console.log(insta_data.graphql.hashtag.edge_hashtag_to_top_posts.edges[id]);
 }
 
 
@@ -31,6 +30,8 @@ function ShowDetail(id){
  * 20180521 簡単に動作するjs
  * 
  */
+// var insta_data;
+
 $(function(){
     //pure js
     var token = '3520061443.a090108.3d61d228cb6f4c77a3a39e1b1d8674ed',
@@ -40,6 +41,7 @@ $(function(){
         scrElement = document.createElement( 'script' );
     var url = 'https://www.instagram.com/explore/tags/' + tag + '/?__a=1';
 
+
     $.ajax({
         url: url,
         dataType: 'json',
@@ -47,27 +49,58 @@ $(function(){
         links: true,
         success: function(data){
              // console.log(data);
-            insta_data = data;
+            // insta_data = data; 
     		for( x in data.graphql.hashtag.edge_hashtag_to_top_posts.edges ){
                 // console.log(data.graphql.hashtag.edge_hashtag_to_top_posts);
                 var edge = data.graphql.hashtag.edge_hashtag_to_top_posts.edges[x];
+                
+                // console.log(edge.node);
                 var thumbnail = edge.node.thumbnail_src;
                 var comment_count = edge.node.edge_media_to_comment.count;
                 var like_count = edge.node.edge_liked_by.count;
+                var shortcode = edge.node.shortcode;
+                var author_name = "";
+                // var author_id = "";
+                
                 // var link = edge.link;
+
+                // var moreinfo_url = 'https://api.instagram.com/oembed/?url=http://instagr.am/p/' + shortcode;
+                // console.log(tmpurl);
+                $.ajax({
+                    url: 'https://api.instagram.com/oembed/?url=http://instagr.am/p/' + shortcode,
+                    type: 'GET',
+                    success: function(data2){
+                        // console.log(data2);
+                        // console.log(data2.author_name);
+                        // author_name = data2.author_name;
+                        // console.log(author_name);
+
+                        sessionStorage.setItem('author_name', data2.author_name);
+                    },
+                    error: function(data2){
+                        console.log(data2); // send the error notifications to console
+                    }
+                    
+                    
+                });
+                $('ul').append('<li id= "' + x + '" class="list-inline-item"><img src="'+ thumbnail +'" width="300" height="300" onmouseover="ShowDetail(' +  x  + ')" ><div>@ '+ sessionStorage.getItem('author_name')  + '<a href="https://www.instagram.com/p/'+ shortcode + '/?taken-by='+ sessionStorage.getItem('author_name') +'"></a></div><div>like '+ like_count  + '</div><div>comment '+ comment_count + '</div></li>');
+
+                // console.log();
+
+
 
                 // $('ul').append('<li id= "' + x + '" class="list-inline-item"><img src="'+ thumbnail +'" width="300" height="300" onmouseover="ShowDetail(' +  x + ',' +  comment_count + ',' + like_count  + ')" ></li>');
     			// data.data[x].images.standard_resolution.url - URL of image 612х612
                 // data.data[x].link - Instagram post URL
-                $('ul').append('<li id= "' + x + '" class="list-inline-item"><img src="'+ thumbnail +'" width="300" height="300" onmouseover="ShowDetail(' +  x  + ')" ></li>');
     			
-    		}1
+    		}
     	},
     	error: function(data){
-    		console.log(data); // send the error notifications to console
+            console.log(data); // send the error notifications to console
     	}
     });
-
+    
+    // console.log(insta_data);
 
 //         // window.mishaProcessResult = function( data ) {
 //     //     for( x in data.data ){
