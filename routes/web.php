@@ -37,3 +37,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'HomeController@store')->name('store');
 
 Route::get('/instagram', 'PublicSiteController@index')->name('public');
+Route::get('/getinsta', 'PublicSiteController@getInstagramInfos');

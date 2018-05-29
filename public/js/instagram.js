@@ -1,4 +1,3 @@
-
 /**
  * 1. get infos of tags
  * 2. find shortcode
@@ -95,6 +94,32 @@ $(function(){
 
 //     // scrElement.setAttribute( 'src', 'https://www.instagram.com/explore/tags/Galaxyカメラ部/?__a=1' );
 //     // document.body.appendChild( scrElement );
+  });
+
+/***
+ * 20180521 簡単に動作するjs
+ * 
+ */
+// $(function(){
+//     //pure js
+//     var token = '3520061443.a090108.3d61d228cb6f4c77a3a39e1b1d8674ed',
+//         num_photos = 10,
+//         tag_name = '春',
+//         container = document.getElementById( 'rudr_instafeed' ),
+//         scrElement = document.createElement( 'script' );
+
+//     // window.mishaProcessResult = function( data ) {
+//     //     for( x in data.data ){
+//     //         container.innerHTML += '<li><img src="' + data.data[x].images.low_resolution.url + '"></li>';
+//     //     }
+//     // }
+
+//     // https://api.instagram.com/v1/tags/{tag-name}?access_token=ACCESS-TOKEN
+//     // scrElement.setAttribute( 'src', 'https://api.instagram.com/v1/tags/春' + '?access_token=' + token + '&count=' + num_photos + '&callback=mishaProcessResult' );
+//     // scrElement.setAttribute( 'src', 'https://api.instagram.com/v1/users/self/media/recent?access_token=' + token + '&count=' + num_photos + '&callback=mishaProcessResult' );
+
+//     // scrElement.setAttribute( 'src', 'https://www.instagram.com/explore/tags/Galaxyカメラ部/?__a=1' );
+//     // document.body.appendChild( scrElement );
 
 
 
@@ -103,8 +128,28 @@ $(function(){
 //     // console.log( tag );
 //     // alert( { $tag }  );
 
+//     var url = 'https://www.instagram.com/explore/tags/' + tag + '/?__a=1';
 
-});
+//     $.ajax({
+//         url: url,
+//         dataType: 'json',
+//         type: 'GET',
+//         success: function(data){
+//      		// console.log(data.graphql.hashtag.edge_hashtag_to_top_posts.edges[0].node.display_url);
+//     		for( x in data.graphql.hashtag.edge_hashtag_to_top_posts.edges ){
+//                 // console.log(x);
+//                 $('ul').append('<li class="list-inline-item"><img src="'+data.graphql.hashtag.edge_hashtag_to_top_posts.edges[x].node.thumbnail_src+'" width="300" height="300" ></li>'); // data.data[x].images.low_resolution.url - URL of image, 306х306
+//     			// data.data[x].images.thumbnail.url - URL of image 150х150
+//     			// data.data[x].images.standard_resolution.url - URL of image 612х612
+//     			// data.data[x].link - Instagram post URL
+//     		}
+//     	},
+//     	error: function(data){
+//     		console.log(data); // send the error notifications to console
+//     	}
+//     });
+// });
+
 
 /**
  * not used..

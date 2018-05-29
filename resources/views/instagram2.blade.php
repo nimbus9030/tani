@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>Business 2</title>
+    <title>Instagram Photo</title>
 
     <!-- Bootstrap Core CSS -->
     {{-- <link href="css/bootstrap.min.css" rel="stylesheet"> --}}
@@ -54,6 +54,7 @@
                     <h2 class="mx-auto mb-5">#{{ $tag }} </h2>
                     <!-- <div id="instafeed"></div> -->
                     <ul id="rudr_instafeed" class="list-inline"></ul>
+                    
                 </div>
             </div>
         </div>
@@ -144,6 +145,10 @@
         // });
         // feed.run();
     </script>
+
+    {{-- <script src="https://apps.elfsight.com/p/platform.js" defer></script> --}}
+
+    <script src="js/instafeed.js"></script>
     <script src="js/instagram.js"></script>
 
 </body>
