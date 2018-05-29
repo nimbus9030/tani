@@ -51,7 +51,6 @@
 <section class="engine"><a href="https://mobirise.co/m">bootstrap table</a></section><section class="features1 cid-qx4ya5iRTC" id="features1-1" data-rv-view="299">
     
     
-
     
     <div class="container">
         <div class="media-container-row">
@@ -93,12 +92,17 @@
                 </div>
             </div>
 
-            
-
         </div>
-
     </div>
 
+</section>
+<section class="mbr-section content4 cid-qx4KnwILkN" id="content4-f" data-rv-view="302">
+    <div class="container">
+        <div class="media-container-row">
+            <h2 class="align-center pb-3 mbr-fonts-style display-1">Instagram Hashta #{{ $tag }}</h2>
+        </div>
+        <ul id="rudr_instafeed" class=""></ul>
+    </div>
 </section>
 
 <section class="mbr-section content4 cid-qx4KnwILkN" id="content4-f" data-rv-view="302">
@@ -550,7 +554,12 @@
   <script src="event/assets/jarallax/jarallax.min.js"></script>
   <script src="event/assets/theme/js/script.js"></script>
   <script src="event/assets/formoid/formoid.min.js"></script>
-  
+  <script type="text/javascript">
+        var tag = {!! json_encode($tag) !!};
+
+  </script>
+  <script src="js/instagram.js"></script>
+
   
 </body>
 </html>
