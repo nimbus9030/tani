@@ -37,8 +37,14 @@ class HomeController extends Controller
 
     public function store(Request $request) {
         $user = Auth::user();
-        $tag = $request->input('tag');
-        Tag::Where('id', 1)->update(['url' => $tag]);
+        $tag = $request->input('tag');        
+        $tag_table = App\Tag::class;
+        if( $tag_table::first() ){
+            Tag::Where('id', 1)->update(['url' => $tag]);
+        }else{
+            Tag::create(array('url' => $tag));
+        }
+
         return view('home', ['tag' => $tag]);
     }
 
