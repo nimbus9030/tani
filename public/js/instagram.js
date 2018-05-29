@@ -89,7 +89,7 @@ $(function(){
         var id = edge.node.owner.id;
         var author_name = sessionStorage.getItem(id);
         console.log(author_name);
-        // $('ul').append('<li id= "' + x + '" class="list-inline-item"><img src="'+ thumbnail +'" width="300" height="300" onmouseover="" ><div><a href="https://www.instagram.com/p/'+ shortcode + '/?taken-by='+ author_name +'" target="blank">@ '+ author_name  + '</a></div><div>like '+ like_count  + '</div><div>comment '+ comment_count + '</div></li>');
+        $('ul').append('<li id= "' + x + '" class="list-inline-item"><img src="'+ thumbnail +'" width="300" height="300" onmouseover="" ><div><a href="https://www.instagram.com/p/'+ shortcode + '/?taken-by='+ author_name +'" target="blank">@ '+ author_name  + '</a></div><div>like '+ like_count  + '</div><div>comment '+ comment_count + '</div></li>');
       }
     })
   });

@@ -10,9 +10,7 @@
     <title>Instagram Photo</title>
 
     <!-- Bootstrap Core CSS -->
-    {{-- <link href="css/bootstrap.min.css" rel="stylesheet"> --}}
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
 
     <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
     <link href="css/custom.css" rel="stylesheet">
@@ -25,7 +23,7 @@
     <![endif]-->
 
     <!-- Custom Fonts from Google -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'> -->
     
 </head>
 
@@ -136,19 +134,7 @@
     <script type="text/javascript">
         var tag = {!! json_encode($tag) !!};
 
-
-        // var feed = new Instafeed({
-        //     get: 'tagged',
-        //     tagName: 'coffee',
-        //     clientId: 'a090108648fd4904bd50f26dc904ff43',
-        //     accessToken: '3520061443.a090108.3d61d228cb6f4c77a3a39e1b1d8674ed',
-        // });
-        // feed.run();
     </script>
-
-    {{-- <script src="https://apps.elfsight.com/p/platform.js" defer></script> --}}
-
-    <script src="js/instafeed.js"></script>
     <script src="js/instagram.js"></script>
 
 </body>
