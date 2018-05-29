@@ -1,11 +1,4 @@
 
-// function ShowDetail(id, comment_count, link_count){
-//     // console.log("mouse overed..", comment_count, link_count);
-//     // console.log(id);
-    
-// }
-
-
 /**
  * 1. get infos of tags
  * 2. find shortcode
@@ -14,23 +7,11 @@
  * 5. this is a link of pic. https://www.instagram.com/p/BjGbW1VBAF-/?taken-by=amandadyer
  */
 
-
-// var insta_data;
-
-function ShowDetail(id){
-    // console.log("mouse overed..", comment_count, link_count);
-    // console.log(id);
-    // console.log(insta_data.graphql.hashtag.edge_hashtag_to_top_posts.edges[id]);
-}
-
-
-
-
 /***
  * 20180521 簡単に動作するjs
  * 
  */
-// var insta_data;
+var insta_data;
 
 $(function(){
     //pure js
@@ -41,18 +22,19 @@ $(function(){
         scrElement = document.createElement( 'script' );
     var url = 'https://www.instagram.com/explore/tags/' + tag + '/?__a=1';
 
-
+    //20180528-----------------------------------
     $.ajax({
         url: url,
         dataType: 'json',
         type: 'GET',
         links: true,
+        // async: false
         success: function(data){
              // console.log(data);
-            // insta_data = data; 
+        insta_data = data; 
     		for( x in data.graphql.hashtag.edge_hashtag_to_top_posts.edges ){
                 // console.log(data.graphql.hashtag.edge_hashtag_to_top_posts);
-                var edge = data.graphql.hashtag.edge_hashtag_to_top_posts.edges[x];
+                var edge = data.graphql.hashtag.edge_hashtag_to_top_posts.edges[x];               
                 
                 // console.log(edge.node);
                 var thumbnail = edge.node.thumbnail_src;
@@ -60,32 +42,30 @@ $(function(){
                 var like_count = edge.node.edge_liked_by.count;
                 var shortcode = edge.node.shortcode;
                 var author_name = "";
+                // console.log(insta_json.thumbnail);
+
+
                 // var author_id = "";
-                
                 // var link = edge.link;
 
                 // var moreinfo_url = 'https://api.instagram.com/oembed/?url=http://instagr.am/p/' + shortcode;
                 // console.log(tmpurl);
-                $.ajax({
-                    url: 'https://api.instagram.com/oembed/?url=http://instagr.am/p/' + shortcode,
-                    type: 'GET',
-                    success: function(data2){
-                        // console.log(data2);
-                        // console.log(data2.author_name);
-                        // author_name = data2.author_name;
-                        // console.log(author_name);
+                // $.ajax({
+                //     url: 'https://api.instagram.com/oembed/?url=http://instagr.am/p/' + shortcode,
+                //     type: 'GET',
+                //     success: function(data2){
+                //         // sessionStorage.setItem('author_name' , data2.author_name);
+                //         // console.log('-----' + sessionStorage.getItem('author_name'));
+                //         insta_json.author_name = data2.author_name;
+                //         console.log(insta_json);
+                //     },
+                //     error: function(data2){
+                //         console.log(data2); // send the error notifications to console
+                //     }                   
+                // });
+                $('ul').append('<li id= "' + x + '" class="list-inline-item"><img src="'+ thumbnail +'" width="300" height="300" onmouseover="" ><div>@ '+ sessionStorage.getItem('author_name')  + '<a href="https://www.instagram.com/p/'+ shortcode + '/?taken-by='+ sessionStorage.getItem('author_name') +'"></a></div><div>like '+ like_count  + '</div><div>comment '+ comment_count + '</div></li>');
 
-                        sessionStorage.setItem('author_name', data2.author_name);
-                    },
-                    error: function(data2){
-                        console.log(data2); // send the error notifications to console
-                    }
-                    
-                    
-                });
-                $('ul').append('<li id= "' + x + '" class="list-inline-item"><img src="'+ thumbnail +'" width="300" height="300" onmouseover="ShowDetail(' +  x  + ')" ><div>@ '+ sessionStorage.getItem('author_name')  + '<a href="https://www.instagram.com/p/'+ shortcode + '/?taken-by='+ sessionStorage.getItem('author_name') +'"></a></div><div>like '+ like_count  + '</div><div>comment '+ comment_count + '</div></li>');
-
-                // console.log();
+                // console.log(insta_json);
 
 
 
@@ -99,6 +79,7 @@ $(function(){
             console.log(data); // send the error notifications to console
     	}
     });
+    //---------------------------------------------------
     
     // console.log(insta_data);
 

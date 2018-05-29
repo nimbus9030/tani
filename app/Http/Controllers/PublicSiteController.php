@@ -7,6 +7,8 @@ use Auth;
 use App;
 use App\Tag;
 
+use Log;
+
 class PublicSiteController extends Controller
 {
     public function __construct()
