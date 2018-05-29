@@ -46,12 +46,14 @@ function get(url) {
 
 $(function(){
     //pure js
+    sessionStorage.clear();
+    
     var token = '3520061443.a090108.3d61d228cb6f4c77a3a39e1b1d8674ed',
         num_photos = 10,
         // tag_name = '春',
         container = document.getElementById( 'rudr_instafeed' ),
         scrElement = document.createElement( 'script' );
-    var url = 'https://www.instagram.com/explore/tags/' + "coffee" + '/?__a=1';
+    var url = 'https://www.instagram.com/explore/tags/' + tag + '/?__a=1';
 
     get(url)
     .then(function(response) {
@@ -86,7 +88,8 @@ $(function(){
         var shortcode = edge.node.shortcode;
         var id = edge.node.owner.id;
         var author_name = sessionStorage.getItem(id);
-        $('ul').append('<li id= "' + x + '" class="list-inline-item"><img src="'+ thumbnail +'" width="300" height="300" onmouseover="" ><div><a href="https://www.instagram.com/p/'+ shortcode + '/?taken-by='+ author_name +'" target="blank">@ '+ author_name  + '</a></div><div>like '+ like_count  + '</div><div>comment '+ comment_count + '</div></li>');
+        console.log(author_name);
+        // $('ul').append('<li id= "' + x + '" class="list-inline-item"><img src="'+ thumbnail +'" width="300" height="300" onmouseover="" ><div><a href="https://www.instagram.com/p/'+ shortcode + '/?taken-by='+ author_name +'" target="blank">@ '+ author_name  + '</a></div><div>like '+ like_count  + '</div><div>comment '+ comment_count + '</div></li>');
       }
     })
   });
