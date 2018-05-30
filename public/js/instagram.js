@@ -57,13 +57,16 @@ $(function(){
         */
        success : function(json){
          // console.log("step3 : get oembed",json);
-         var thumbnail = json.thumbnail_url;
+        //  var thumbnail = json.thumbnail_url;
+         var thumbnail = edge.node.thumbnail_src;
+
          var id = json.author_id;
          var author_name = json.author_name;
          var shortcode = edge.node.shortcode;
          var comment_count = edge.node.edge_media_to_comment.count;
          var like_count = edge.node.edge_liked_by.count;
   
+        //  console.log(json);
          $('ul').append('<li id= "' + id + '" class="list-inline-item"><img src="' + thumbnail + '" width="300" height="300" onmouseover="" ><div><a class="social-link rounded-circle text-white mr-3" href="https://www.instagram.com/p/' + shortcode + '/?taken-by=' + author_name + '" target="blank">@ ' + author_name + '</a></div><div>like ' + like_count + '</div><div>comment ' + comment_count + '</div></li>');
         //  $('ul').append('<li id= "' + id + '" class="list-inline-item"><img src="' + thumbnail + '" width="300" height="300" onmouseover="" ><div><a class="social-link rounded-circle text-white mr-3" href="https://www.instagram.com/p/' + shortcode + '/?taken-by=' + author_name + '" target="blank">@ ' + author_name + '</a></div></li>');
         // $('ul').append('<a href="https://www.instagram.com/p/'+ shortcode + '/?taken-by='+ author_name +'" target="blank"><img src="'+thumbnail+'">@ '+ author_name  + '</a>');
