@@ -38,4 +38,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'HomeController@store')->name('store');
 
 Route::get('/instagram', 'PublicSiteController@index')->name('public');
-Route::get('/getinsta', 'PublicSiteController@getInstagramInfos');
+Route::get('/instagram2', 'PublicSiteController@event')->name('public');
+Route::get('/instagram3', 'PublicSiteController@hotel')->name('public');
+Route::get('/instagram4', 'PublicSiteController@magazine')->name('public');
+Route::get('/instagram5', 'PublicSiteController@restaurant')->name('public');
+Route::get('/instagram6', 'PublicSiteController@travel')->name('public');
+Route::get('/instagram7', 'PublicSiteController@wedding')->name('public');
+
+// Route::get('/getinsta', 'PublicSiteController@getInstagramInfos');
