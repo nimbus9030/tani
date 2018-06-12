@@ -14,6 +14,8 @@
 
     <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
     <link href="css/custom.css" rel="stylesheet">
+    <link href="css/slider.css" rel="stylesheet">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -42,7 +44,7 @@
     </header>
 
 	<!-- Intro Section -->
-    <section class="intro">
+    <!-- <section class="intro">
         <div class="container">
             <div class="row">
                 <div class="col-md-auto">
@@ -50,13 +52,23 @@
                     <h2 class="section-heading">管理画面で入力したタグは「{{ $tag }}」です。</h2>
                     <p class="text-light">タグに関連がある写真がここにでます。</p>
                     <h2 class="mx-auto mb-5">#{{ $tag }} </h2>
-                    <!-- <div id="instafeed"></div> -->
-                    <ul id="rudr_instafeed" class="list-inline"></ul>
+                    <ul id="rudr_instafeed" class="ig_slider_inner"></ul>
                     
                 </div>
             </div>
         </div>
+    </section> -->
+
+    <section class="ig_slider">
+        <div class="ig_slider_top">
+            <div class="ig_slider_top_text"><h3 class="title_tag">#湘南</h3></div>
+            <!-- <div class="ig_slider_top_control"><a class="control_prev"><img src="img/arrow_l.png" width="8" height="13"></a><a class="control_next"><img src="img/arrow_r.png" width="8" height="13"></a></div> -->
+        </div>
+
+        <ul id="rudr_instafeed" class="ig_slider_inner">
+        </ul>   
     </section>
+
 
 	<!-- Content 1 -->
     <section class="content">
