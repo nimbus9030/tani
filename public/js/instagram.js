@@ -69,7 +69,7 @@ $(function(){
         //  console.log(json);
 
         var li = $('<li>', {});
-        var a = $('<a>', {});
+         var a = $('<a>', { href: "https://www.instagram.com/p/" + shortcode + "/?taken-by=" + author_name, target:"blank"});
         var img = $('<img>', { src:thumbnail, width:300, height:300 });
         img.appendTo(a);
         a.appendTo(li);

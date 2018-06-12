@@ -63,5 +63,18 @@ class PublicSiteController extends Controller
         $tag_table = App\Tag::class;
         $tag = $tag_table::first()['url'];
         return view('wedding', ['tag' => $tag]);
-    }    
+    }
+
+    public function writehtml()
+    {
+        // https://www.ritolab.com/entry/7
+        // https://laravel.com/docs/5.4/filesystem
+
+        $tag_table = App\Tag::class;
+        $tag = $tag_table::first()['url'];
+        File::put( 'test.html', viw('resources.views.instagram2')->with(["tag" => $tag])->render() );
+
+        return "OK";
+        // return view('instagram2', ['tag' => $tag]);
+    }
 }
