@@ -61,7 +61,7 @@
 
     <section class="ig_slider">
         <div class="ig_slider_top">
-            <div class="ig_slider_top_text"><h3 class="title_tag">#湘南</h3></div>
+            <div class="ig_slider_top_text"><h3 class="title_tag">#{{ $tag }}</h3></div>
             <!-- <div class="ig_slider_top_control"><a class="control_prev"><img src="img/arrow_l.png" width="8" height="13"></a><a class="control_next"><img src="img/arrow_r.png" width="8" height="13"></a></div> -->
         </div>
 
