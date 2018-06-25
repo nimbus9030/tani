@@ -37,6 +37,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'HomeController@store')->name('store');
 
+Route::get('/editor', 'HomeController@editor')->name('editor');
+Route::post('/editor', 'HomeController@writeHtml')->name('write_html');
+
 Route::get('/instagram', 'PublicSiteController@index')->name('public');
 Route::get('/instagram2', 'PublicSiteController@event')->name('public');
 Route::get('/instagram3', 'PublicSiteController@hotel')->name('public');
@@ -46,5 +49,5 @@ Route::get('/instagram6', 'PublicSiteController@travel')->name('public');
 Route::get('/instagram7', 'PublicSiteController@wedding')->name('public');
 
 
-Route::get('writehtml', 'PublicSiteController@writehtml')->name('writehtml');
+// Route::get('writehtml', 'PublicSiteController@writehtml')->name('writehtml');
 // Route::get('/getinsta', 'PublicSiteController@getInstagramInfos');
