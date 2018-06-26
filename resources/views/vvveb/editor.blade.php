@@ -547,11 +547,15 @@
 
 $(document).ready(function() 
 {
-	Vvveb.Builder.init('storage/template/narrow-jumbotron/index.html', function() {
-		var tag = {!! json_encode($tasks) !!};
-		// console.log(tag.html);
+	// Vvveb.Builder.init('storage/template/narrow-jumbotron/index.html', function() {
+	Vvveb.Builder.init('storage/template/insta/instagram.html', function() {
 
-		$(window.FrameDocument).find("body").html(tag.html);
+		// 
+		// var tag = {!! json_encode($tasks) !!};
+		// // console.log(tag.html);
+		// if( tag ){
+		// 	$(window.FrameDocument).find("body").html(tag.html);
+		// }
 
 	});
 
@@ -559,16 +563,16 @@ $(document).ready(function()
 	Vvveb.FileManager.init();
 	Vvveb.FileManager.addPages(
 	[
-		// {name:"narrow-jumbotron", title:"Jumbotron",  url: "demo/narrow-jumbotron/index.html"},
-		// {name:"landio", title:"Landio landing page",  url: "demo/landio/index.html"},
-		// {name:"album", title:"Album",  url: "demo/album/index.html"},
-		// {name:"blog", title:"Blog",  url: "demo/blog/index.html"},
-		// {name:"carousel", title:"Carousel",  url: "demo/carousel/index.html"},
-		// {name:"offcanvas", title:"Offcanvas",  url: "demo/offcanvas/index.html"},
-		// {name:"pricing", title:"Pricing",  url: "demo/pricing/index.html"},
-		// {name:"product", title:"Product",  url: "demo/product/index.html"},
-		// {name:"ecommerce", title:"eCommerce homepage",  url: "ecommerce_demo/index.html"},
-		// {name:"test", title:"test",  url: "http://vvveb_install.givan.ro/"},
+		{name:"narrow-jumbotron", title:"Jumbotron",  url: "demo/narrow-jumbotron/index.html"},
+		{name:"landio", title:"Landio landing page",  url: "demo/landio/index.html"},
+		{name:"album", title:"Album",  url: "demo/album/index.html"},
+		{name:"blog", title:"Blog",  url: "demo/blog/index.html"},
+		{name:"carousel", title:"Carousel",  url: "demo/carousel/index.html"},
+		{name:"offcanvas", title:"Offcanvas",  url: "demo/offcanvas/index.html"},
+		{name:"pricing", title:"Pricing",  url: "demo/pricing/index.html"},
+		{name:"product", title:"Product",  url: "demo/product/index.html"},
+		{name:"ecommerce", title:"eCommerce homepage",  url: "ecommerce_demo/index.html"},
+		{name:"test", title:"test",  url: "http://vvveb_install.givan.ro/"},
 	]);
 
 	// $.ajaxSetup({

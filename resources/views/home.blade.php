@@ -32,6 +32,13 @@
                         </button>
                     </form>
                 </div>
+                <div class="panel-body">
+                    レイアウトを編集する
+                    <!-- <br/> -->
+                    <button type="submit" class="btn btn-primary" onclick="location.href='{{ url('editor') }}'">
+                            editor
+                    </button>
+                </div>
             </div>
         </div>
     </div>
