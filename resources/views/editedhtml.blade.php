@@ -114,7 +114,7 @@
           div.append(child_div);
 
 
-          $('ul').append(li);
+          $('#rudr_instafeed').append(li);
         } ,
         error : function(err){
             // alert("오류가 발생하였습니다. 관리자에 문의하세요.");

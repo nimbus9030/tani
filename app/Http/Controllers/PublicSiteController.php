@@ -26,6 +26,10 @@ class PublicSiteController extends Controller
         $html = Html::all()[0];
         
         return view('editedhtml', ['html' => $html, 'tag' => $tag]);
+
+        // $tag_table = App\Tag::class;
+        // $tag = $tag_table::first()['url'];
+        // return view('instagram', ['tag' => $tag]);
     }
 
     public function event()

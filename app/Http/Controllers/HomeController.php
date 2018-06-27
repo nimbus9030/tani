@@ -44,6 +44,7 @@ class HomeController extends Controller
         $tag_table = App\Tag::class;
         if( $tag_table::first() ){
             Tag::Where('id', 1)->update(['url' => $tag]);
+            Log::info($tag);
         }else{
             Tag::create(array('url' => $tag));
         }
@@ -54,18 +55,18 @@ class HomeController extends Controller
 
     public function editor()
     {
-        $html = Html::all();
-        if( !$html->count() ){
-            return view('vvveb.editor');
-        }else{
-            $tasks = $html[0];
 
+        $html = Html::all();
+        $tag = '';
+        $tasks = '';
+
+        if( $html->count() ){
+            $tasks = $html[0];
             $tag_table = App\Tag::class;
             $tag = $tag_table::first()['url'];
-
-            return view('vvveb.editor', compact('tasks', 'tag'));
         }
 
+        return view('vvveb.editor', compact('tasks', 'tag'));
         // return view('vvveb.editor',compact('tasks'));
     }
 
@@ -82,6 +83,7 @@ class HomeController extends Controller
             $insert_html->html = $request->text;
             $insert_html->save();
         }else{
+            Log::info($request->text);
             $html[0]->update([ 'html' => $request->text]);
         }
 

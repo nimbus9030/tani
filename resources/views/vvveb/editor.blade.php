@@ -11,7 +11,7 @@
 
     <link rel="icon" href="favicon.ico">
     <base href="">
-    <title>VvvebJs</title>
+    <title>s-photo editor</title>
     
     <link href="css/editor.css" rel="stylesheet">
     <link href="css/line-awesome.css" rel="stylesheet">
@@ -45,9 +45,9 @@
 						  <i class="la la-eye"></i>
 					  </button>
 
-					  <button class="btn btn-light" title="Export (Ctrl + E)" id="save-btn" data-vvveb-action="save" data-vvveb-shortcut="ctrl+e">
+					  {{-- <button class="btn btn-light" title="Export (Ctrl + E)" id="save-btn" data-vvveb-action="save" data-vvveb-shortcut="ctrl+e">
 						  <i class="la la-save"></i>
-					  </button>
+					  </button> --}}
 					  <button class="btn btn-light" title="Export (Ctrl + E)" id="suctom-save-btn" onclick="Post();" data-vvveb-shortcut="ctrl+e">
 						  <i class="la la-save"></i>
 					  </button>
@@ -548,13 +548,10 @@ var tag = {!! json_encode($tag) !!};
 
 $(document).ready(function() 
 {
-	console.log(tag);
+	// console.log(tag);
 	// Vvveb.Builder.init('storage/template/narrow-jumbotron/index.html', function() {
-	Vvveb.Builder.init('storage/template/insta/instagram.html', function() {
-		
-		// 
+	Vvveb.Builder.init('storage/instagram.html', function() {
 		var task = {!! json_encode($tasks) !!};
-		// console.log(tag.html);
 		if( task ){
 			$(window.FrameDocument).find("body").html(task.html);
 		}
