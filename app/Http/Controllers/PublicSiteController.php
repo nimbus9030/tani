@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App;
 use App\Tag;
+use App\Html;
 
 use Log;
 
@@ -20,7 +21,15 @@ class PublicSiteController extends Controller
     {
         $tag_table = App\Tag::class;
         $tag = $tag_table::first()['url'];
-        return view('instagram2', ['tag' => $tag]);
+        // return view('instagram2', ['tag' => $tag]);
+
+        $html = Html::all()[0];
+        
+        return view('editedhtml', ['html' => $html, 'tag' => $tag]);
+
+        // $tag_table = App\Tag::class;
+        // $tag = $tag_table::first()['url'];
+        // return view('instagram', ['tag' => $tag]);
     }
 
     public function event()
@@ -65,16 +74,18 @@ class PublicSiteController extends Controller
         return view('wedding', ['tag' => $tag]);
     }
 
-    public function writehtml()
-    {
-        // https://www.ritolab.com/entry/7
-        // https://laravel.com/docs/5.4/filesystem
+    //
+    //編集用のfileを出力するときに参考。今は使わない
+    // public function writehtml()
+    // {
+    //     // https://www.ritolab.com/entry/7
+    //     // https://laravel.com/docs/5.4/filesystem
 
-        $tag_table = App\Tag::class;
-        $tag = $tag_table::first()['url'];
-        File::put( 'test.html', viw('resources.views.instagram2')->with(["tag" => $tag])->render() );
+    //     $tag_table = App\Tag::class;
+    //     $tag = $tag_table::first()['url'];
+    //     File::put( 'test.html', viw('resources.views.instagram2')->with(["tag" => $tag])->render() );
 
-        return "OK";
-        // return view('instagram2', ['tag' => $tag]);
-    }
+    //     return "OK";
+    //     // return view('instagram2', ['tag' => $tag]);
+    // }
 }

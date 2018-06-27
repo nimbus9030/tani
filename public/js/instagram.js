@@ -58,63 +58,44 @@ $(function(){
        success : function(json){
          // console.log("step3 : get oembed",json);
         //  var thumbnail = json.thumbnail_url;
-         var thumbnail = edge.node.thumbnail_src;
+          var thumbnail = edge.node.thumbnail_src;
 
-         var id = json.author_id;
-         var author_name = json.author_name;
-         var shortcode = edge.node.shortcode;
-         var comment_count = edge.node.edge_media_to_comment.count;
-         var like_count = edge.node.edge_liked_by.count;
-  
-        //  console.log(json);
+          var id = json.author_id;
+          var author_name = json.author_name;
+          var shortcode = edge.node.shortcode;
+          var comment_count = edge.node.edge_media_to_comment.count;
+          var like_count = edge.node.edge_liked_by.count;
 
-        var li = $('<li>', {});
-         var a = $('<a>', { href: "https://www.instagram.com/p/" + shortcode + "/?taken-by=" + author_name, target:"blank"});
-        var img = $('<img>', { src:thumbnail, width:300, height:300 });
-        img.appendTo(a);
-        a.appendTo(li);
+          //  console.log(json);
 
-        var div = $('<div>', {class:'ig_id'});
-        div.append('<p><span><img src="img/ig_member_pic.png"></span>' + author_name + '</p>');
-        a.append(div);
+          var li = $('<li>', {});
+          var a = $('<a>', { href: "https://www.instagram.com/p/" + shortcode + "/?taken-by=" + author_name, target:"blank"});
+          var img = $('<img>', { src:thumbnail, width:300, height:300 });
+          img.appendTo(a);
+          a.appendTo(li);
 
-        div =  $('<div>', { class:'overlay'});
-        a.append(div);
+          var div = $('<div>', {class:'ig_id'});
+          div.append('<p><span><img src="img/ig_member_pic.png"></span>' + author_name + '</p>');
+          a.append(div);
 
-
-        var child_div = $('<div>', {class:'overlay_ig_like'});
-        child_div.append('<p><span><img src="img/icon_like@2x.png"></span>' + like_count + '</p>');
-        div.append(child_div);
-
-        child_div = $('<div>', {class:'overlay_ig_com'});
-        child_div.append('<p><span><img src="img/icon_com@2x.png"></span>' + comment_count + '</p>');
-        div.append(child_div);
-
-        child_div = $('<div>', {class:'overlay_ig_id'});
-        child_div.append('<p><span><img src="img/ig_member_pic.png"></span>' + author_name + '</p>');
-        div.append(child_div);
+          div =  $('<div>', { class:'overlay'});
+          a.append(div);
 
 
-        $('ul').append(li);
+          var child_div = $('<div>', {class:'overlay_ig_like'});
+          child_div.append('<p><span><img src="img/icon_like@2x.png"></span>' + like_count + '</p>');
+          div.append(child_div);
+
+          child_div = $('<div>', {class:'overlay_ig_com'});
+          child_div.append('<p><span><img src="img/icon_com@2x.png"></span>' + comment_count + '</p>');
+          div.append(child_div);
+
+          child_div = $('<div>', {class:'overlay_ig_id'});
+          child_div.append('<p><span><img src="img/ig_member_pic.png"></span>' + author_name + '</p>');
+          div.append(child_div);
 
 
-        // $('ul').append(div);
-        // $('<div>', { src:'hoge', class:'fuga', text:'piyo' });
-
-
-
-        // <li>
-        //     <a><img src="img/picture_02.png" width="600" height="600">
-        //     <div class="ig_id"><p><span><img src="img/ig_member_pic.png"></span>kh_mrk96</p></div>
-        //     <div class="overlay">
-                
-        //         <div class="overlay_ig_like"><p><span><img src="img/icon_like@2x.png"></span>125</p></div>
-        //           <div class="overlay_ig_com"><p><span><img src="img/icon_com@2x.png"></span>125</p></div>
-        //           <div class="overlay_ig_id"><p><span><img src="img/ig_member_pic.png"></span>kh_mrk96</p></div>
-                
-        //       </div>
-        //     </a>
-        // </li>
+          $('ul').append(li);
 
         // this code is current.
         //  $('ul').append('<li id= "' + id + '" class="list-inline-item"><img src="' + thumbnail + '" width="300" height="300" onmouseover="" ><div><a class="social-link rounded-circle text-white mr-3" href="https://www.instagram.com/p/' + shortcode + '/?taken-by=' + author_name + '" target="blank">@ ' + author_name + '</a></div><div>like ' + like_count + '</div><div>comment ' + comment_count + '</div></li>');

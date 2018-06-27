@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App;
+
 use App\Tag;
+use App\Html;
 
 use TagController;
+
 use Log;
 
 class HomeController extends Controller
@@ -41,6 +44,7 @@ class HomeController extends Controller
         $tag_table = App\Tag::class;
         if( $tag_table::first() ){
             Tag::Where('id', 1)->update(['url' => $tag]);
+            Log::info($tag);
         }else{
             Tag::create(array('url' => $tag));
         }
@@ -48,6 +52,43 @@ class HomeController extends Controller
         return view('home', ['tag' => $tag]);
     }
 
+
+    public function editor()
+    {
+
+        $html = Html::all();
+        $tag = '';
+        $tasks = '';
+
+        if( $html->count() ){
+            $tasks = $html[0];
+            $tag_table = App\Tag::class;
+            $tag = $tag_table::first()['url'];
+        }
+
+        return view('vvveb.editor', compact('tasks', 'tag'));
+        // return view('vvveb.editor',compact('tasks'));
+    }
+
+    public function writeHtml(Request $request)
+    {
+        //１。公開画面で利用するタグはdbへ
+        //２。編集画面で利用するhtml fileはstorageへ <- しなくてもいいかも。
+
+        $html = Html::all();
+        // Log::info($html->count());
+
+        if( !$html->count() ){
+            $insert_html = new Html;
+            $insert_html->html = $request->text;
+            $insert_html->save();
+        }else{
+            Log::info($request->text);
+            $html[0]->update([ 'html' => $request->text]);
+        }
+
+        return response('OK', 200);
+    }
 
 
     public function EditTag($tag){
