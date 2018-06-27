@@ -544,18 +544,20 @@
 
 
 <script>
+var tag = {!! json_encode($tag) !!};
 
 $(document).ready(function() 
 {
+	console.log(tag);
 	// Vvveb.Builder.init('storage/template/narrow-jumbotron/index.html', function() {
 	Vvveb.Builder.init('storage/template/insta/instagram.html', function() {
-
+		
 		// 
-		// var tag = {!! json_encode($tasks) !!};
-		// // console.log(tag.html);
-		// if( tag ){
-		// 	$(window.FrameDocument).find("body").html(tag.html);
-		// }
+		var task = {!! json_encode($tasks) !!};
+		// console.log(tag.html);
+		if( task ){
+			$(window.FrameDocument).find("body").html(task.html);
+		}
 
 	});
 

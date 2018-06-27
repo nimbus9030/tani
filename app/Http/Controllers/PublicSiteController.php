@@ -19,13 +19,13 @@ class PublicSiteController extends Controller
 
     public function index()
     {
-        // $tag_table = App\Tag::class;
-        // $tag = $tag_table::first()['url'];
+        $tag_table = App\Tag::class;
+        $tag = $tag_table::first()['url'];
         // return view('instagram2', ['tag' => $tag]);
 
         $html = Html::all()[0];
         
-        return view('editedhtml', ['html' => $html]);
+        return view('editedhtml', ['html' => $html, 'tag' => $tag]);
     }
 
     public function event()

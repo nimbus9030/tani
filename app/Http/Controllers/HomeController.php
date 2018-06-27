@@ -59,7 +59,11 @@ class HomeController extends Controller
             return view('vvveb.editor');
         }else{
             $tasks = $html[0];
-            return view('vvveb.editor', compact('tasks'));
+
+            $tag_table = App\Tag::class;
+            $tag = $tag_table::first()['url'];
+
+            return view('vvveb.editor', compact('tasks', 'tag'));
         }
 
         // return view('vvveb.editor',compact('tasks'));
