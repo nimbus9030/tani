@@ -48,6 +48,9 @@ Route::get('/instagram5', 'PublicSiteController@restaurant')->name('public');
 Route::get('/instagram6', 'PublicSiteController@travel')->name('public');
 Route::get('/instagram7', 'PublicSiteController@wedding')->name('public');
 
+Route::get('/pera',function(){
+    return view('welcome');
+});
 
 // Route::get('writehtml', 'PublicSiteController@writehtml')->name('writehtml');
 // Route::get('/getinsta', 'PublicSiteController@getInstagramInfos');
