@@ -25,83 +25,109 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+    public function index()
+    {
+        return view('home');
+    }
+
+    public function add()
+    {
+        return view('contents.create');
+    }
+
+    public function editor()
+    {
+        $tasks = '';
+        $tag = '';
+        return view('vvveb.editor', compact('tasks', 'tag'));
+    }
+
+    // public function store(Request $request) {
+    //     return view('home');
+    // }
+
+    /***  
+     * 下は古いソース。再利用するものがあるのでまだ消さない
+     * 2018.07.11 by jh.lee
+     */
+
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $tag_table = App\Tag::class;
-        $tag = $tag_table::first()['url'];
-        return view('home', ['tag' => $tag]);
-    }
+    // public function index()
+    // {
+    //     $tag_table = App\Tag::class;
+    //     $tag = $tag_table::first()['url'];
+    //     return view('home', ['tag' => $tag]);
+    // }
 
 
-    public function store(Request $request) {
-        $user = Auth::user();
-        $tag = $request->input('tag');        
-        $tag_table = App\Tag::class;
-        if( $tag_table::first() ){
-            Tag::Where('id', 1)->update(['url' => $tag]);
-            Log::info($tag);
-        }else{
-            Tag::create(array('url' => $tag));
-        }
+    // public function store(Request $request) {
+    //     $user = Auth::user();
+    //     $tag = $request->input('tag');        
+    //     $tag_table = App\Tag::class;
+    //     if( $tag_table::first() ){
+    //         Tag::Where('id', 1)->update(['url' => $tag]);
+    //         Log::info($tag);
+    //     }else{
+    //         Tag::create(array('url' => $tag));
+    //     }
 
-        return view('home', ['tag' => $tag]);
-    }
-
-
-    public function editor()
-    {
-
-        $html = Html::all();
-        $tag = '';
-        $tasks = '';
-
-        if( $html->count() ){
-            $tasks = $html[0];
-            $tag_table = App\Tag::class;
-            $tag = $tag_table::first()['url'];
-        }
-
-        return view('vvveb.editor', compact('tasks', 'tag'));
-        // return view('vvveb.editor',compact('tasks'));
-    }
-
-    public function writeHtml(Request $request)
-    {
-        //１。公開画面で利用するタグはdbへ
-        //２。編集画面で利用するhtml fileはstorageへ <- しなくてもいいかも。
-
-        $html = Html::all();
-        // Log::info($html->count());
-
-        if( !$html->count() ){
-            $insert_html = new Html;
-            $insert_html->html = $request->text;
-            $insert_html->save();
-        }else{
-            Log::info($request->text);
-            $html[0]->update([ 'html' => $request->text]);
-        }
-
-        return response('OK', 200);
-    }
+    //     return view('home', ['tag' => $tag]);
+    // }
 
 
-    public function EditTag($tag){
+    // public function editor()
+    // {
 
-    }
+    //     $html = Html::all();
+    //     $tag = '';
+    //     $tasks = '';
+
+    //     if( $html->count() ){
+    //         $tasks = $html[0];
+    //         $tag_table = App\Tag::class;
+    //         $tag = $tag_table::first()['url'];
+    //     }
+
+    //     return view('vvveb.editor', compact('tasks', 'tag'));
+    //     // return view('vvveb.editor',compact('tasks'));
+    // }
+
+    // public function writeHtml(Request $request)
+    // {
+    //     //１。公開画面で利用するタグはdbへ
+    //     //２。編集画面で利用するhtml fileはstorageへ <- しなくてもいいかも。
+
+    //     $html = Html::all();
+    //     // Log::info($html->count());
+
+    //     if( !$html->count() ){
+    //         $insert_html = new Html;
+    //         $insert_html->html = $request->text;
+    //         $insert_html->save();
+    //     }else{
+    //         Log::info($request->text);
+    //         $html[0]->update([ 'html' => $request->text]);
+    //     }
+
+    //     return response('OK', 200);
+    // }
 
 
-    public function insta(){
-        // return view('instagram');
+    // public function EditTag($tag){
 
-        Log::info('called insta...');
-        $tag_table = App\Tag::class;
-        $tag = $tag_table::first()['url'];
-        return view('instagram2', ['tag' => $tag]);
-    }
+    // }
+
+
+    // public function insta(){
+    //     // return view('instagram');
+
+    //     Log::info('called insta...');
+    //     $tag_table = App\Tag::class;
+    //     $tag = $tag_table::first()['url'];
+    //     return view('instagram2', ['tag' => $tag]);
+    // }
 }

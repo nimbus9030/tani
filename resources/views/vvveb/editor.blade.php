@@ -544,17 +544,17 @@
 
 
 <script>
-var tag = {!! json_encode($tag) !!};
+var tag =   {!! json_encode($tag) !!};
 
 $(document).ready(function() 
 {
 	// console.log(tag);
-	// Vvveb.Builder.init('storage/template/narrow-jumbotron/index.html', function() {
-	Vvveb.Builder.init('storage/instagram.html', function() {
-		var task = {!! json_encode($tasks) !!};
-		if( task ){
-			$(window.FrameDocument).find("body").html(task.html);
-		}
+	Vvveb.Builder.init('storage/template/narrow-jumbotron/index.html', function() {
+	// Vvveb.Builder.init('storage/instagram.html', function() {
+	// 	var task = {!! json_encode($tasks) !!};
+	// 	if( task ){
+	// 		$(window.FrameDocument).find("body").html(task.html);
+	// 	}
 
 	});
 
